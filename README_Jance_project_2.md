@@ -2,7 +2,10 @@
 
 
 ## Purpose of the Project
-The purpose of this project is to create a model with the least Root Mean Square Error (RMSE), to predict the price of the house at sales.
+The purpose of this project is to create a model with the least Root Mean Square Error (RMSE) that helps to:
+1. predict the price of the house at sales
+2. recommend the features that are likely to increase the value of a house
+3. recommend the features that are likely to decrease the value of a house
 
 ## Data Cleaning
 
@@ -17,6 +20,8 @@ The purpose of this project is to create a model with the least Root Mean Square
    NaN in 'Pool QC' is due to the house not having a pool.
    
    Hence, decided to fill NaN with zeros if data type is integer and 'NA' if data type is string
+
+3. Remove "id" from the data as it is identification number and unlikely to have any effect on the sales price.
 
 3. Data type
    There are three data types: integer, float and object
@@ -67,11 +72,11 @@ The purpose of this project is to create a model with the least Root Mean Square
 5. I transform all the numeric and catergorial columns at the same time using ColumnTransformer.
 6. I then add the Linear Regression model into the pipeline.
 7. I fit the pipeline to the train set.
-8. Train set score = 0.86919
-9. Test set score = 0.87508
+8. Train set score = 0.86758
+9. Test set score = 0.87528
 
 ## Evaluate the Base Model   
-1. RMSE = 28017.26788
+1. RMSE = 27994.56540
 2. RMSE is about 15.10% of error from y_test mean.
 3. The model does not seem to work well when the sales price is about more than 400,000.
 
@@ -100,15 +105,15 @@ The purpose of this project is to create a model with the least Root Mean Square
 4. Transform all the numeric and catergorial columns at the same time using ColumnTransformer
 5. Add the Linear Regression model into the pipeline.
 7. Fit the pipeline to the train set.
-8. Train set score = 0.90034
-9. Test set score = 0.89267
+8. Train set score = 0.91060
+9. Test set score = 0.89953
 10. There is very minor overfitting, which can be overlooked
-11. RSME = 25970.38887, which is lower than the initial model
-12. RMSE is about 14.00% of error from y_test mean, which is 1% lower than the initial model
+11. RSME = 25126.35580, which is lower than the initial model
+12. RMSE is about 13.55% of error from y_test mean, which is 1% lower than the initial model
 13. The plot of y_test against y_pred shows a better fit than the initial model except for a few more obvious outliers.
 
 ## Apply Model to Test Set and Predict Sales Price
-1. Mean Predicted sales price = 181,040.08
+1. Mean Predicted sales price = $180,617.03
 
 ## Conclusion
 - I use a 'one-size fit all' transformation approach due to time and effort efficiency.
@@ -116,4 +121,36 @@ The purpose of this project is to create a model with the least Root Mean Square
 This could mean that all the variables are important in determining the price of the house.
 I would attest it is true that all variables have some form of importance, because you can't just look at the kitchen (for example) of the house to determine the price of the house and not look at the bedroom condition or the neighborhood of the house.
 - The final model chosen is with 20 features and applying polynomial degree of 2 to numeric columns.
-- The mean predicted price of the house at sales $181,040.08
+- The mean predicted price of the house at sales $180,617.03
+
+## Recomendations
+### 1. Features that appear to add the value to a home 
+
+|S/N    |Feature|Remarks|
+|---	|---	|---	|
+|1.   	|Ground Living Area|The larger the area, the higher the value|
+|2.   	|Overall Condition of the House|The better the overall condition, the higher the value|
+|3.   	|Year Built|The later the house is buit, the higher the value|
+|4.   	|Combined Ground Living and Second Floor Area|The larger the area, the higher the value
+
+
+### 2. Features that appear to hurt the value to a home 
+
+|S/N    |Feature|Remarks|
+|---	|---	|---	|
+|1.   	|Combined Ground Living and First Floor Area|The larger the area, the lower the value|
+|2.   	|Overall Material and Finish of the House|The better the overall condition, the lower the value|
+|3.   	|Value of Miscellaneous Feature|The higher the miscellaneous value, the lower the value of the house|
+|4.   	|Size of Garage|The larger the area, the lower the value
+|5.   	|Combined First Floor and Basement Area|The larger the area, the lower the value|
+
+
+### 3. Controllable feature that could allow homeowners to increase the value of their home
+Most of the features are relating to the size of the house, which it is unlikely that homeowners are able to make changes to.
+There is one feature, "Overall Condition of the House", which homeowners have control over.<br>
+Homeowners are therefore recommended to maintain the condition of their house in top-notch condition in order to fetch a higher house value.
+
+
+### 4. Application of Model
+This model is only likely to work in the United States, or countries that have similar houses like in Boston.
+Homeowners and property agents in Singapore for example, will not be able to use this model as about 90% of the property are HDB Flats
