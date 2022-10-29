@@ -38,8 +38,8 @@ The purpose of this project is to create a model with the least Root Mean Square
    
    Example:
    > **Bathroom**<br>
-   > bsmt_full_bath
-   > bsmt_half_bath
+   > bsmt_full_bath<br>
+   > bsmt_half_bath<br>
    > full_bath  
    > half_bath  
    > bedroom_abvgr
