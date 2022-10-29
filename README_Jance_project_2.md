@@ -37,18 +37,18 @@ The purpose of this project is to create a model with the least Root Mean Square
 3. At first, I wanted to group similar columns together (eg, X_kitchen  = all the kitchen related columns) and calculate the coefficient and correlation to the sales price.
    
    Example:
-   > **Bathroom**
+   > **Bathroom**<br>
    > bsmt_full_bath
    > bsmt_half_bath
    > full_bath  
    > half_bath  
    > bedroom_abvgr
    >
-   > **Kitchen**
+   > **Kitchen**<br>
    > kitchen_abvgr  
    > kitchen_qual 
    >
-   > **Fireplace**
+   > **Fireplace**<br>
    > fireplaces  
    > fireplace_qu
    
