@@ -42,7 +42,6 @@ The purpose of this project is to create a model with the least Root Mean Square
    > bsmt_half_bath<br>
    > full_bath  
    > half_bath  
-   > bedroom_abvgr
    >
    > **Kitchen**<br>
    > kitchen_abvgr  
